@@ -10,4 +10,5 @@ async def echo(message:types.Message):
     await message.answer("I dont understand try again: \n"
                          "/start-start dialog \n"
                          "/myinfo-about info \n"
-                         "/picture-send pictute \n")
+                         "/picture-send pictute \n"
+                         "/kafe-choose menu \n")

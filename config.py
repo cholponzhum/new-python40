@@ -9,8 +9,9 @@ dp = Dispatcher()
 
 async def set_my_menu():
     await bot.set_my_commands([
-        types.BotCommand(command="start",description="beginner"),
-        types.BotCommand(command="picture",description="Show"),
-        types.BotCommand(command="shop",description="shop"),
+        types.BotCommand(command="start",description="начинать"),
+        types.BotCommand(command="picture",description="Показывать картинку рандомно"),
+        types.BotCommand(command="shop",description="Магазин"),
+        types.BotCommand(command="kafe",description="Кафе"),
 
     ])
