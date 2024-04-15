@@ -22,6 +22,9 @@ async def start_cmd(message:types.Message):
             ],
             [
                 types.InlineKeyboardButton(text="Адрес,контакты ",callback_data="adress")
+            ],
+            [
+                types.InlineKeyboardButton(text= "Пройти опрос", callback_data="survey")
             ]
         ]
     )
@@ -40,3 +43,5 @@ async def about_us(cb:types.CallbackQuery):
 async def aadres(cb:types.CallbackQuery):
     await cb.answer()
     await cb.message.answer("Адрес:ул. Суюмбаева, 192, уг. ул. Никитина")
+
+

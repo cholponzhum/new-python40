@@ -9,7 +9,9 @@ from handlers.picture import picture_router
 from handlers.myinfo import myinfo_router
 from handlers.shop import shop_router
 from handlers.kafe import kafe_router
+from handlers.survey import survey_router
 from handlers.echo import echo_router
+
 
 
 async def main():
@@ -20,7 +22,7 @@ async def main():
     dp.include_router(myinfo_router)
     dp.include_router(shop_router)
     dp.include_router(kafe_router)
-    
+    dp.include_router(survey_router)
 
     
     dp.include_router(echo_router)
