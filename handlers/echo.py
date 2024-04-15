@@ -11,4 +11,7 @@ async def echo(message:types.Message):
                          "/start-start dialog \n"
                          "/myinfo-about info \n"
                          "/picture-send pictute \n"
+                         "/otziv-otziv \n"
+                         "/survey-opros \n"
+                         "/shop-magazin \n"
                          "/kafe-choose menu \n")

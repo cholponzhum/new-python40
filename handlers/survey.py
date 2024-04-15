@@ -29,7 +29,7 @@ async def process_name(message:types.Message,state:FSMContext):
   
 
 @survey_router.message(BookSurvey.age)
-async def process_name(message:types.Message,state:FSMContext):
+async def process_age(message:types.Message,state:FSMContext):
     age=message.text
     if not age.isdigit():
         await message.answer("Пожалуйста , ведите число")
@@ -44,14 +44,14 @@ async def process_name(message:types.Message,state:FSMContext):
 
 
 @survey_router.message(BookSurvey.gender)
-async def process_name(message:types.Message,state:FSMContext): 
+async def process_gender(message:types.Message,state:FSMContext): 
     await state.update_data(gender=message.text)
     await state.set_state(BookSurvey.genre)
     await message.answer("Какой любимый ваш жанр?")
 
 
 @survey_router.message(BookSurvey.genre)
-async def process_name(message:types.Message,state:FSMContext):
+async def process_genre(message:types.Message,state:FSMContext):
     await state.update_data(genre=message.text)
     await message.answer("спасибо за пройденный опрос")
 

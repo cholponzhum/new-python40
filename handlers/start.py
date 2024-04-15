@@ -25,6 +25,9 @@ async def start_cmd(message:types.Message):
             ],
             [
                 types.InlineKeyboardButton(text= "Пройти опрос", callback_data="survey")
+            ],
+            [
+                types.InlineKeyboardButton(text= "Оставьте отзыв", callback_data="otziv")
             ]
         ]
     )
