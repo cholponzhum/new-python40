@@ -16,6 +16,12 @@ class BookOtziv(StatesGroup):
     comments =State()
 
 
+@otziv_router.message(Command("stop"))
+@otziv_router.message(F.text.lower()=="stop")
+async def stop(message:types.Message,state:FSMContext):
+    await state.clear()
+
+
 @otziv_router.callback_query(F.data=="otziv")
 async def start_otziv(cb:types.CallbackQuery, state: FSMContext):
     await cb.answer()

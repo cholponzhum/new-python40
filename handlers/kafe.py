@@ -9,12 +9,12 @@ async def kafe(message:types.Message):
     kb =types.ReplyKeyboardMarkup(
         keyboard=[
             [
-                types.KeyboardButton(text='Европейская кухня'),
-                types.KeyboardButton(text='Восточная кухня'),
+                types.KeyboardButton(text='европейская кухня'),
+                types.KeyboardButton(text='восточная кухня'),
             ],
             [
-                types.KeyboardButton(text='Китайская кухня'),
-                types.KeyboardButton(text='Турецкая кухня'),
+                types.KeyboardButton(text='китайская кухня'),
+                types.KeyboardButton(text='турецкая кухня'),
             ]
 
         ],
@@ -29,18 +29,18 @@ async def show_evrope(message:types.Message):
     await message.answer('блюда от шеф повара для вас!')
 
 
-@kafe_router.message(F.text.lower()=='Восточная кухня')
+@kafe_router.message(F.text.lower()=='восточная кухня')
 async def show_vostoc(message:types.Message):
     print(message.text)
     await message.answer('блюда Востока  для вас!')
 
 
-@kafe_router.message(F.text.lower()=='Китайская кухня')
+@kafe_router.message(F.text.lower()=='китайская кухня')
 async def show_china(message:types.Message):
     print(message.text)
     await message.answer('блюда Китая  для вас!')
 
-@kafe_router.message(F.text.lower()=='Турецкая кухня')
+@kafe_router.message(F.text.lower()=='турецкая кухня')
 async def show_china(message:types.Message):
     print(message.text)
     await message.answer('блюда Турции для вас!')

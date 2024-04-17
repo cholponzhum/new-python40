@@ -4,6 +4,8 @@ from aiogram.filters import Command
 
 shop_router =Router()
 
+
+
 @shop_router.message(Command('shop'))
 async def shop(message:types.Message):
     kb =types.ReplyKeyboardMarkup(
@@ -23,7 +25,13 @@ async def shop(message:types.Message):
     await message.answer('choose janr', reply_markup=kb)
 
 
-@shop_router.message(F.text.lower()=='horror')
+genres=['drama','romantika','horror','fantastika']
+
+
+@shop_router.message(F.text.lower().in_(genres))
 async def show_horor(message:types.Message):
+    genre=message.text.lower()
+    print(genre)
+    kb=types.ReplyKeyboardRemove()
     print(message.text)
     await message.answer('all books horrors')

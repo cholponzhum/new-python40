@@ -1,9 +1,12 @@
 import asyncio
 from aiogram import Bot
 import logging
+from dotenv import load_dotenv
+from os import getenv
 
 
-from config import bot,dp,set_my_menu
+
+from config import bot,dp,set_my_menu,database
 from handlers.start import start_router
 from handlers.picture import picture_router
 from handlers.myinfo import myinfo_router
@@ -13,6 +16,10 @@ from handlers.survey import survey_router
 from handlers.otziv import otziv_router
 from handlers.echo import echo_router
 
+
+
+async def on_start_up(bot:Bot):
+    await database.create_tables()
 
 
 async def main():
@@ -27,6 +34,8 @@ async def main():
     dp.include_router(otziv_router)
     
     dp.include_router(echo_router)
+
+    dp.startup.register(on_start_up)
 
     await dp.start_polling(bot)
 
