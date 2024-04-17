@@ -2,9 +2,15 @@ from aiogram import Router,F,types
 from aiogram.fsm.state import State,StatesGroup
 from aiogram.fsm.context import FSMContext
 from aiogram.filters import Command
+import sqlite3
+from config import database
 
 
 otziv_router=Router()
+
+
+db=sqlite3.connect("db.sqlite")
+cursor=db.cursor()
 
 
 class BookOtziv(StatesGroup):
@@ -20,6 +26,7 @@ class BookOtziv(StatesGroup):
 @otziv_router.message(F.text.lower()=="stop")
 async def stop(message:types.Message,state:FSMContext):
     await state.clear()
+    
 
 
 @otziv_router.callback_query(F.data=="otziv")
@@ -89,5 +96,13 @@ async def process_clean(message:types.Message,state:FSMContext):
 @otziv_router.message(BookOtziv.comments)
 async def process_comments(message:types.Message,state:FSMContext):
     await state.update_data(comments=message.text)
+    data=await state.get_data()
+    print ("~",data)
+
+
+    await database.execute(
+        "INSERT INTO otziv (name,number,vizit,rate,clean,comments) VALUES(?,?,?,?,?,?)",
+         (data["name"], data["number"], data["vizit"], data["rate"], data["clean"], data["comments"]))
     await message.answer("спасибо за пройденный опрос")
+    await state.clear()
 
